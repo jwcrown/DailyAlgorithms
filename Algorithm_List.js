@@ -198,7 +198,7 @@
             console.log(arr2);
         }
 
-//Chapter 10 - STRINGS, PART II
+//CHAPTER 10 - STRINGS, PART II
     
     //CREATE AN ARRAY CONTAIING WORDS FROM GIVEN STRING
     function StringToWordArr(str){
@@ -330,6 +330,55 @@
                 walker = walker.right;
             }
             return walker.val;
+        }
+// CHAPTER 12 - SORTS
+
+    //SORT ARR BY SWAPPING FIRST INDEX WITH NEXT IF LESS THAN
+        function BubbleSort(arr){
+            var n = arr.length;
+            while(n > 1){
+                for (var i = 0; i < n - 1; i++){
+                    if (arr[i] > arr[i + 1]){
+                        var temp = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = temp;
+                    }
+                }
+                n--;
+            }
+            return arr;
+        }
+
+    //SORT ARR BY FINDING LOWEST VALUE AND SWAPPING WITH IDX ONE THEN CONTINUE TO NEXT IDX AND REPEAT
+        function selectionSort(arr){
+            for (var i = 0; i < arr.length-1; i++){
+                for (var k = i + 1; k < arr.length; k++){
+                    if (arr[k] < arr[i]){
+                        swap(k, i, arr);
+                    }
+                }
+            }
+            return arr;
+        }
+        
+        function swap(x, y, arr){
+            var temp = arr[x];
+            arr[x] = arr[y];
+            arr[y] = temp;
+        }
+
+    //PARTITION ARRAY WITH FIRST IDX VALUE IN PLACE
+        function Partition(arr){
+            swap(0, arr.length - 1, arr);
+            var wall = -1;
+            for (var i = 0; i < arr.length - 1; i++){
+                if (arr[i] < arr[arr.length - 1]){
+                    swap(i, wall + 1, arr);
+                    wall++;
+                }
+            }
+            swap(arr.length -1, wall + 1, arr);
+            return arr;
         }
 
 // ????
