@@ -350,7 +350,7 @@
         }
 
     //SORT ARR BY FINDING LOWEST VALUE AND SWAPPING WITH IDX ONE THEN CONTINUE TO NEXT IDX AND REPEAT
-        function selectionSort(arr){
+        function SelectionSort(arr){
             for (var i = 0; i < arr.length-1; i++){
                 for (var k = i + 1; k < arr.length; k++){
                     if (arr[k] < arr[i]){
@@ -381,6 +381,64 @@
             return arr;
         }
 
+    //SORT AN ARRAY IN PLACE USING PARTITION
+        function QuickSort(arr, start = 0, end = arr.length - 1){
+            if (arr.length > 1){
+                let pivot = Partition(arr, start, end);
+                if (start < pivot - 1){
+                    QuickSort(arr, start, pivot -1);
+                }
+                if (pivot < end){
+                    QuickSort(arr, pivot + 1, end);
+                }
+            }
+            return arr;
+        }
+
+// CHAPTER 13 - SETS AND PRIORITY QUEUES
+    
+    //GIVEN TWO ARRAYS RETURN AN ARRAY WITH ALL THE VALUES THAT HAVE A MATCH
+        function IntersectionSet(arr1, arr2){
+            let obj = {};
+            let newarr = [];
+            for (var x = 0; x< arr1.length; x++){
+                if (!obj[arr1[x]]){
+                    obj[arr1[x]] = 1;
+                }
+                else{
+                    obj[arr1[x]] += 1;
+                }
+            }
+            for (var y = 0; y < arr2.length; y ++){
+                if (obj[arr2[y]] >= 1){
+                    newarr.push(arr2[y]);
+                    obj[arr2[y]] -= 1;
+                }
+            }
+            return newarr;
+        }
+
+    //GIVEN TWO ARRAYS RETURN AN ARRAY WITH NO DUPLICATES
+        function Union(arr1, arr2){
+            var arr3 = arr1.concat(arr2);
+            var newarr = [];
+            var counter = 0;
+            for (var i = 0; i < arr3.length; i ++){
+                if (newarr.length == 0){
+                    newarr.push(arr3[0]);
+                }
+                var cond = true;
+                for (var k = 0; k < newarr.length; k++){
+                    if (arr3[i] == newarr[k]){
+                        cond = false;
+                    }
+                }
+                if (cond == true){
+                    newarr.push(arr3[i])
+                }
+            }
+            return newarr;
+        }
+
 // ????
-    //KEEP ADDING INTERGERS OF A GIVEN ARRAY TOGETHER UNTIL LEFT WITH SINGLE NUMBER
         
