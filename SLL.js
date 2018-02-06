@@ -26,6 +26,15 @@ function SSL(){
         }
         return false;
     }
+
+    this.removeFront = function(){
+        if (!this.head){
+            return;
+        }
+        var temp = this.head;
+        this.head = this.head.next;
+        return temp;
+    }
 }
 
 var mySSL = new SSL();
@@ -34,4 +43,8 @@ mySSL.addFront(3);
 mySSL.addFront(50);
 mySSL.addFront(13);
 mySSL.addFront(9);
-console.log(mySSL.contains(3));
+console.log(mySSL.contains(9));
+mySSL.removeFront();
+mySSL.removeFront();
+console.log(mySSL.contains(9));
+console.log(mySSL);
