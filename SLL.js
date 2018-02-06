@@ -29,7 +29,7 @@ function SLL(){
 
     this.removeFront = function(){
         if (!this.head){
-            return;
+            return null;
         }
         var temp = this.head;
         this.head = this.head.next;
@@ -42,6 +42,34 @@ function SLL(){
         }
         return this.head.val;
     }
+
+    this.listLength = function(){
+        if (!this.head){
+            return null;
+        }
+        var count = 1;
+        var runner = this.head;
+        while (runner.next){
+            count ++;
+            runner = runner.next;
+        }
+        return count;
+    }
+
+    this.maxVal = function(){
+        if (!this.head){
+            return null;
+        }
+        var max = this.head.val;
+        var runner = this.head.next;
+        while (runner){
+            if (max < runner.val){
+                max = runner.val
+            }
+            runner = runner.next;
+        }
+        return max;
+    }
 }
 
 var mySLL = new SLL();
@@ -50,9 +78,12 @@ mySLL.addFront(3);
 mySLL.addFront(50);
 mySLL.addFront(13);
 mySLL.addFront(9);
+console.log(mySLL.maxVal());
+console.log(mySLL.listLength());
 console.log(mySLL.contains(9));
 mySLL.removeFront();
 mySLL.removeFront();
+console.log(mySLL.listLength());
 console.log(mySLL.contains(9));
 console.log(mySLL);
 mySLL.removeFront();
