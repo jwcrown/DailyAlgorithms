@@ -275,7 +275,7 @@
                 this.root = new BTNode(val);
                 return;
             }
-            var walker = this.runner;
+            var walker = this.root;
             while (walker.val != null){
                 if (walker.val > val){
                     if (walker.left == null){
