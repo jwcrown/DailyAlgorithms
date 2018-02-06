@@ -3,7 +3,7 @@ function Node(val){
     this.next = null;
 }
 
-function SSL(){
+function SLL(){
     this.head = null;
 
     //methods for linked list
@@ -35,16 +35,25 @@ function SSL(){
         this.head = this.head.next;
         return temp;
     }
+
+    this.frontVal = function(){
+        if (!this.head){
+            return null;
+        }
+        return this.head.val;
+    }
 }
 
-var mySSL = new SSL();
-mySSL.addFront(2);
-mySSL.addFront(3);
-mySSL.addFront(50);
-mySSL.addFront(13);
-mySSL.addFront(9);
-console.log(mySSL.contains(9));
-mySSL.removeFront();
-mySSL.removeFront();
-console.log(mySSL.contains(9));
-console.log(mySSL);
+var mySLL = new SLL();
+mySLL.addFront(2);
+mySLL.addFront(3);
+mySLL.addFront(50);
+mySLL.addFront(13);
+mySLL.addFront(9);
+console.log(mySLL.contains(9));
+mySLL.removeFront();
+mySLL.removeFront();
+console.log(mySLL.contains(9));
+console.log(mySLL);
+mySLL.removeFront();
+console.log(mySLL.frontVal());
