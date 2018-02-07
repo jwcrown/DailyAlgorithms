@@ -56,6 +56,19 @@ function SLL(){
         return count;
     }
 
+    this.displayList = function(){
+        if (!this.head){
+            return null;
+        }
+        var list = "";
+        var runner = this.head;
+        while (runner){
+            list += runner.val + " => ";
+            runner = runner.next;
+        }
+        return list;
+    }
+
     this.maxVal = function(){
         if (!this.head){
             return null;
@@ -70,21 +83,30 @@ function SLL(){
         }
         return max;
     }
+
+    this.minVal = function(){
+        if (!this.head){
+            return null;
+        }
+        var min = this.head.val;
+        var runner = this.head.next;
+        while (runner){
+            if (min > runner.val){
+                min = runner.val;
+            }
+            runner = runner.next;
+        }
+        return min;
+    }
 }
 
 var mySLL = new SLL();
 mySLL.addFront(2);
 mySLL.addFront(3);
 mySLL.addFront(50);
-mySLL.addFront(13);
+mySLL.addFront(1);
 mySLL.addFront(9);
-console.log(mySLL.maxVal());
-console.log(mySLL.listLength());
-console.log(mySLL.contains(9));
+console.log(mySLL.minVal())
 mySLL.removeFront();
 mySLL.removeFront();
-console.log(mySLL.listLength());
-console.log(mySLL.contains(9));
-console.log(mySLL);
 mySLL.removeFront();
-console.log(mySLL.frontVal());
