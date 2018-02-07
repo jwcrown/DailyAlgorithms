@@ -36,6 +36,22 @@ function SLQueue(){
         }
         return this.head.val;
     }
+
+    this.contains = function(val){
+        if (!this.head){
+            return null;
+        }
+        var runner = this.head;
+        while (runner){//iterates through queue
+            if (runner.val == val){//checking if each node equals value given
+                return true;
+            }
+            runner = runner.next;
+        }
+        return false;
+    }
+
+
 }
 
 var myQueue = new SLQueue();
@@ -46,3 +62,4 @@ myQueue.enqueue(4);
 console.log(myQueue);
 console.log(myQueue.dequeue());
 console.log(myQueue.frontVal());
+console.log(myQueue.contains(2));
