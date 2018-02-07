@@ -29,6 +29,13 @@ function SLQueue(){
         this.head = this.head.next;
         return temp;
     }
+
+    this.frontVal = function(){
+        if (!this.head){
+            return null;
+        }
+        return this.head.val;
+    }
 }
 
 var myQueue = new SLQueue();
@@ -38,3 +45,4 @@ myQueue.enqueue(3);
 myQueue.enqueue(4);
 console.log(myQueue);
 console.log(myQueue.dequeue());
+console.log(myQueue.frontVal());
