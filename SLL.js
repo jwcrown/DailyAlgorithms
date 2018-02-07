@@ -98,15 +98,30 @@ function SLL(){
         }
         return min;
     }
+
+    this.average = function(){
+        if (!this.head){
+            return null;
+        }
+        var runner = this.head.next;
+        var sum = this.head.val;
+        var count = 1;
+        while (runner){
+            sum += runner.val;
+            count ++;
+            runner = runner.next;
+        }
+        return sum/count;
+    }
 }
 
 var mySLL = new SLL();
 mySLL.addFront(2);
 mySLL.addFront(3);
 mySLL.addFront(50);
-mySLL.addFront(1);
+mySLL.addFront(2);
 mySLL.addFront(9);
-console.log(mySLL.minVal())
+console.log(mySLL.average())
 mySLL.removeFront();
 mySLL.removeFront();
 mySLL.removeFront();
