@@ -111,7 +111,7 @@ function SLL(){
             count ++;
             runner = runner.next;
         }
-        return sum/count;
+        return sum/count;//calculation for average run here
     }
 }
 
