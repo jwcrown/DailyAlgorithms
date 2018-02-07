@@ -20,6 +20,15 @@ function SLQueue(){
             this.tail = newNode;
         }
     }
+
+    this.dequeue = function(){
+        if (!this.head){
+            return null;
+        }
+        var temp = this.head.val;
+        this.head = this.head.next;
+        return temp;
+    }
 }
 
 var myQueue = new SLQueue();
@@ -27,4 +36,5 @@ myQueue.enqueue(1);
 myQueue.enqueue(2);
 myQueue.enqueue(3);
 myQueue.enqueue(4);
-console.log(myQueue)
+console.log(myQueue);
+console.log(myQueue.dequeue());
