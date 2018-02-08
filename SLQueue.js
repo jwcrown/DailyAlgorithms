@@ -76,10 +76,27 @@ function SLQueue(){
 
 }
 
-var myQueue = new SLQueue();
-myQueue.enqueue(1);
-myQueue.enqueue(2);
-console.log(myQueue.queueSize());
-myQueue.enqueue(3);
-myQueue.enqueue(4);
-console.log(myQueue.queueSize());
+function compareQueues(queue1, queue2){
+    var runner1 = queue1.head;
+    var runner2 = queue2.head;
+    while (runner1 && runner2){
+        if (runner1.val != runner2.val){
+            return false;
+        }
+        runner1 = runner1.next;
+        runner2 = runner2.next;
+    }
+    if (!runner1 && !runner2){
+        return true;
+    }
+    return false;
+}
+
+var myQueue1 = new SLQueue();
+myQueue1.enqueue(3);
+myQueue1.enqueue(2);
+var myQueue2 = new SLQueue();
+myQueue2.enqueue(3);
+myQueue2.enqueue(3);
+
+console.log(compareQueues(myQueue1, myQueue2))
