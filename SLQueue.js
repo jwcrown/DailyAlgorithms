@@ -51,15 +51,35 @@ function SLQueue(){
         return false;
     }
 
+    this.isEmpty = function(){
+        if (!this.head){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    this.queueSize = function(){
+        if (!this.head){
+            return null;
+        }
+        var runner = this.head.next;
+        var size = 1;
+        while (runner){
+            size ++;
+            runner = runner.next;
+        }
+        return size;
+    }
+
 
 }
 
 var myQueue = new SLQueue();
 myQueue.enqueue(1);
 myQueue.enqueue(2);
+console.log(myQueue.queueSize());
 myQueue.enqueue(3);
 myQueue.enqueue(4);
-console.log(myQueue);
-console.log(myQueue.dequeue());
-console.log(myQueue.frontVal());
-console.log(myQueue.contains(2));
+console.log(myQueue.queueSize());

@@ -31,7 +31,7 @@ function SLL(){
         if (!this.head){
             return null;
         }
-        var temp = this.head;
+        var temp = this.head.val;
         this.head = this.head.next;
         return temp;
     }
