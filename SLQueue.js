@@ -73,6 +73,19 @@ function SLQueue(){
         return size;
     }
 
+    this.displayQueue = function(){
+        if (!this.head){
+            return null;
+        }
+        var list = "";
+        var runner = this.head;
+        while (runner){
+            list += runner.val + " => ";
+            runner = runner.next;
+        }
+        return list;
+    }
+
 
 }
 
@@ -122,13 +135,46 @@ function removeMinimum(queue){
     return min.val;
 }
 
-var myQueue1 = new SLQueue();
-myQueue1.enqueue(11);
-myQueue1.enqueue(1);
-myQueue1.enqueue(2);
-myQueue1.enqueue(2);
-myQueue1.enqueue(1);
+function interleaveQueue(queue){
+    if (!queue.head){
+        return null;
+    }
+    var count = 1;
+    var runner = queue.head.next;
+    var weave = queue.head.next;
+    while (runner){//finds length of queue
+        count++;
+        if (count % 2 == 1){
+            weave = weave.next;//moves at half the rate of runner to find middle of queue
+        }
+        runner = runner.next;//iterates through queue
+    }
+    runner = queue.head;//reset for swapping for loop
+    var temp1 = null;
+    var temp2 = null;
+    for (var i = 0; i < Math.ceil(count / 2); i++){
+        temp1 = runner.next;//saves runner pointer before being changed
+        runner.next = weave;
+        if (!runner.next){//updates tail if needed
+            queue.tail = runner;
+        }
+        runner = temp1;
+        if (i + 1 < Math.ceil(count / 2)){
+            temp2 = weave.next;//saves weave pointer before being changed
+            weave.next = temp1;
+            weave = temp2;
+        }
+    }
+    return queue;
+}
 
-console.log(removeMinimum(myQueue1))
-console.log(myQueue1.queueSize());
-console.log(myQueue1)
+var myQueue1 = new SLQueue();
+myQueue1.enqueue(1);
+myQueue1.enqueue(2);
+myQueue1.enqueue(3);
+myQueue1.enqueue(4);
+myQueue1.enqueue(5);
+console.log(myQueue1.displayQueue());
+interleaveQueue(myQueue1);
+console.log(myQueue1.displayQueue());
+console.log(myQueue1);
