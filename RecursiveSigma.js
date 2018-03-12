@@ -8,4 +8,4 @@ function recursiveSigma(sigmaNum){
     }
     return sigmaNum + recursiveSigma(sigmaNum - 1);
 }
-console.log(recursiveSigma(5))
+console.log(recursiveSigma(5));
