@@ -18,7 +18,7 @@ function FloodFill(canvas2D, startXY, newColor, oldColor = canvas2D[startXY[0]][
 }
 
 console.log(FloodFill([ [2,3,4,3,4],
-                        [1,3,1,2,4],
-                        [4,3,3,3,4],
+                        [1,3,4,2,4],
+                        [4,3,3,4,4],
                         [4,2,3,3,1],
                         [3,2,2,3,2]], [0,4], 1))
